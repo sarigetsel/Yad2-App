@@ -1,30 +1,43 @@
+function svg(label, emoji, bg1, bg2) {
+  const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="${bg1}"/><stop offset="100%" stop-color="${bg2}"/>
+    </linearGradient></defs>
+    <rect width="640" height="480" fill="url(#g)"/>
+    <text x="320" y="210" font-size="96" text-anchor="middle">${emoji}</text>
+    <text x="320" y="290" font-size="30" text-anchor="middle" fill="#363636" font-family="Arial,sans-serif">${label}</text>
+  </svg>`
+  return `data:image/svg+xml,${encodeURIComponent(svgContent)}`
+}
+
 export const PRODUCT_IMAGES = {
-  guitar: 'https://images.unsplash.com/photo-1516925856310-b593457a71a5?w=600&h=450&fit=crop&q=80',
-  piano: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=600&h=450&fit=crop&q=80',
-  microphone: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&h=450&fit=crop&q=80',
-  sofa: 'https://images.unsplash.com/photo-1555041469-a586c0361544?w=600&h=450&fit=crop&q=80',
-  dining: 'https://images.unsplash.com/photo-1617806118773-1e0e938d9a24?w=600&h=450&fit=crop&q=80',
-  wardrobe: 'https://images.unsplash.com/photo-1616598336755-72e7888753f8?w=600&h=450&fit=crop&q=80',
-  bed: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&h=450&fit=crop&q=80',
-  smartphone: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=450&fit=crop&q=80',
-  macbook: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=450&fit=crop&q=80',
-  fridge: 'https://images.unsplash.com/photo-1571175443880-49a1e1e2d8a2?w=600&h=450&fit=crop&q=80',
-  ps5: 'https://images.unsplash.com/photo-1606813907291-d86efa9b94e4?w=600&h=450&fit=crop&q=80',
-  bag: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&h=450&fit=crop&q=80',
-  watch: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=450&fit=crop&q=80',
-  ebike: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=600&h=450&fit=crop&q=80',
-  coffee: 'https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?w=600&h=450&fit=crop&q=80',
-  cookware: 'https://images.unsplash.com/photo-1584990347499-66a5b6c9112a?w=600&h=450&fit=crop&q=80',
-  tv: 'https://images.unsplash.com/photo-1593359677873-a4bb59244616?w=600&h=450&fit=crop&q=80',
-  desk: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&h=450&fit=crop&q=80',
+  guitar: svg('גיטרה', '🎸', '#fff4eb', '#ffd6a5'),
+  piano: svg('פסנתר', '🎹', '#f3e8ff', '#ddd6fe'),
+  microphone: svg('מיקרופון', '🎤', '#fce7f3', '#fbcfe8'),
+  speaker: svg('רמקול', '🔊', '#e0e7ff', '#c7d2fe'),
+  sofa: svg('ספה', '🛋️', '#fff7ed', '#fed7aa'),
+  dining: svg('שולחן אוכל', '🪑', '#fef3c7', '#fde68a'),
+  wardrobe: svg('ארון', '🚪', '#f5f5f4', '#d6d3d1'),
+  bed: svg('מיטה', '🛏️', '#eff6ff', '#bfdbfe'),
+  smartphone: svg('סמארטפון', '📱', '#ecfeff', '#a5f3fc'),
+  macbook: svg('מחשב נייד', '💻', '#f0fdf4', '#bbf7d0'),
+  fridge: svg('מקרר', '🧊', '#f0f9ff', '#bae6fd'),
+  ps5: svg('PlayStation', '🎮', '#faf5ff', '#e9d5ff'),
+  bag: svg('תיק', '👜', '#fdf2f8', '#f9a8d4'),
+  watch: svg('שעון', '⌚', '#f8fafc', '#cbd5e1'),
+  ebike: svg('אופניים', '🚲', '#ecfdf5', '#6ee7b7'),
+  coffee: svg('מכונת קפה', '☕', '#fffbeb', '#fcd34d'),
+  cookware: svg('סירים', '🍳', '#fef2f2', '#fca5a5'),
+  electronics: svg('אלקטרוניקה', '🔌', '#eef2ff', '#a5b4fc'),
+  misc: svg('שונות', '📦', '#f1f5f9', '#94a3b8'),
 }
 
 const CATEGORY_IMAGES = {
   כלי_נגינה: PRODUCT_IMAGES.guitar,
   רהיטים: PRODUCT_IMAGES.sofa,
-  אלקטרוניקה: PRODUCT_IMAGES.smartphone,
+  אלקטרוניקה: PRODUCT_IMAGES.electronics,
   בלי_חיים: PRODUCT_IMAGES.bag,
-  שונות: PRODUCT_IMAGES.coffee,
+  שונות: PRODUCT_IMAGES.misc,
 }
 
 const NAME_TO_IMAGE = [
@@ -32,17 +45,24 @@ const NAME_TO_IMAGE = [
   ['guitar', PRODUCT_IMAGES.guitar],
   ['פסנתר', PRODUCT_IMAGES.piano],
   ['piano', PRODUCT_IMAGES.piano],
+  ['מיקרופון', PRODUCT_IMAGES.microphone],
   ['מיקר', PRODUCT_IMAGES.microphone],
-  ['mic', PRODUCT_IMAGES.microphone],
+  ['microphone', PRODUCT_IMAGES.microphone],
+  ['רמקול', PRODUCT_IMAGES.speaker],
+  ['speaker', PRODUCT_IMAGES.speaker],
   ['ספה', PRODUCT_IMAGES.sofa],
   ['sofa', PRODUCT_IMAGES.sofa],
+  ['שולחן אוכל', PRODUCT_IMAGES.dining],
   ['שולחן', PRODUCT_IMAGES.dining],
   ['table', PRODUCT_IMAGES.dining],
+  ['כיסא', PRODUCT_IMAGES.dining],
   ['ארון', PRODUCT_IMAGES.wardrobe],
+  ['wardrobe', PRODUCT_IMAGES.wardrobe],
   ['מיטה', PRODUCT_IMAGES.bed],
   ['bed', PRODUCT_IMAGES.bed],
   ['סמארטפון', PRODUCT_IMAGES.smartphone],
   ['galaxy', PRODUCT_IMAGES.smartphone],
+  ['samsung', PRODUCT_IMAGES.smartphone],
   ['טלפון', PRODUCT_IMAGES.smartphone],
   ['macbook', PRODUCT_IMAGES.macbook],
   ['מקבוק', PRODUCT_IMAGES.macbook],
@@ -51,30 +71,28 @@ const NAME_TO_IMAGE = [
   ['playstation', PRODUCT_IMAGES.ps5],
   ['ps5', PRODUCT_IMAGES.ps5],
   ['תיק', PRODUCT_IMAGES.bag],
-  ['bag', PRODUCT_IMAGES.bag],
   ['שעון', PRODUCT_IMAGES.watch],
+  ['garmin', PRODUCT_IMAGES.watch],
   ['watch', PRODUCT_IMAGES.watch],
+  ['אופניים', PRODUCT_IMAGES.ebike],
   ['אופנ', PRODUCT_IMAGES.ebike],
-  ['bike', PRODUCT_IMAGES.ebike],
+  ['ebike', PRODUCT_IMAGES.ebike],
   ['קפה', PRODUCT_IMAGES.coffee],
   ['coffee', PRODUCT_IMAGES.coffee],
+  ['סירים', PRODUCT_IMAGES.cookware],
   ['סיר', PRODUCT_IMAGES.cookware],
-  ['cook', PRODUCT_IMAGES.cookware],
-  ['טלוויז', PRODUCT_IMAGES.tv],
-  ['שולחן עבודה', PRODUCT_IMAGES.desk],
+  ['cookware', PRODUCT_IMAGES.cookware],
 ]
 
 export function getProductImage(product) {
-  if (product?.picture?.startsWith('http')) return product.picture
-  if (product?.picture) {
-    return `/api/images/${encodeURIComponent(product.picture)}`
-  }
   const name = (product?.nameProduct || '').toLowerCase()
+
   for (const [keyword, url] of NAME_TO_IMAGE) {
     if (name.includes(keyword.toLowerCase())) return url
   }
+
   const cat = product?.categor?.categoryName
-  return CATEGORY_IMAGES[cat] || PRODUCT_IMAGES.sofa
+  return CATEGORY_IMAGES[cat] || PRODUCT_IMAGES.misc
 }
 
 export function formatCategory(name) {
@@ -94,44 +112,12 @@ export function formatStatus(status) {
 }
 
 export const CATEGORY_NAV = [
-  {
-    key: 'רהיטים',
-    label: 'סלון ואירוח',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c0361544?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'רהיטים',
-    label: 'ארונות ואחסון',
-    image: 'https://images.unsplash.com/photo-1616598336755-72e7888753f8?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'רהיטים',
-    label: 'שולחנות וכיסאות',
-    image: 'https://images.unsplash.com/photo-1617806118773-1e0e938d9a24?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'רהיטים',
-    label: 'חדר שינה',
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'כלי_נגינה',
-    label: 'כלי נגינה',
-    image: 'https://images.unsplash.com/photo-1516925856310-b593457a71a5?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'אלקטרוניקה',
-    label: 'אלקטרוניקה',
-    image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'בלי_חיים',
-    label: 'אביזרים',
-    image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&h=200&fit=crop&q=80',
-  },
-  {
-    key: 'שונות',
-    label: 'שונות',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop&q=80',
-  },
+  { key: 'רהיטים', label: 'סלון ואירוח', image: PRODUCT_IMAGES.sofa },
+  { key: 'רהיטים', label: 'ארונות ואחסון', image: PRODUCT_IMAGES.wardrobe },
+  { key: 'רהיטים', label: 'שולחנות וכיסאות', image: PRODUCT_IMAGES.dining },
+  { key: 'רהיטים', label: 'חדר שינה', image: PRODUCT_IMAGES.bed },
+  { key: 'כלי_נגינה', label: 'כלי נגינה', image: PRODUCT_IMAGES.guitar },
+  { key: 'אלקטרוניקה', label: 'אלקטרוניקה', image: PRODUCT_IMAGES.electronics },
+  { key: 'בלי_חיים', label: 'אביזרים', image: PRODUCT_IMAGES.bag },
+  { key: 'שונות', label: 'שונות', image: PRODUCT_IMAGES.misc },
 ]

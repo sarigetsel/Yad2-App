@@ -1,4 +1,4 @@
-import { PRODUCT_IMAGES } from '../utils/images'
+import { getProductImage } from '../utils/images'
 
 export const MOCK_PRODUCTS = [
   {
@@ -7,7 +7,6 @@ export const MOCK_PRODUCTS = [
     price: 850,
     status: 'כמו_חדש',
     phoneNumber: '050-1234567',
-    picture: PRODUCT_IMAGES.guitar,
     description: 'גיטרה אקוסטית מצוינת ללימודים והופעות. כוללת כיסוי. נקנתה לפני שנה, מעט שימוש.',
     categor: { categoryName: 'כלי_נגינה' },
     area: { areaName: 'מרכז' },
@@ -19,7 +18,6 @@ export const MOCK_PRODUCTS = [
     price: 2200,
     status: 'חדש_באריזה',
     phoneNumber: '052-9876543',
-    picture: PRODUCT_IMAGES.piano,
     description: 'פסנתר חשמלי דק ואלגנטי עם 88 קלידים. חדש באריזה.',
     categor: { categoryName: 'כלי_נגינה' },
     area: { areaName: 'גוש_דן' },
@@ -31,7 +29,6 @@ export const MOCK_PRODUCTS = [
     price: 480,
     status: 'כמו_חדש',
     phoneNumber: '054-5551234',
-    picture: PRODUCT_IMAGES.microphone,
     description: 'מיקרופון דינמי מקצועי. מושלם להופעות ואולפן.',
     categor: { categoryName: 'כלי_נגינה' },
     area: { areaName: 'צפון' },
@@ -43,7 +40,6 @@ export const MOCK_PRODUCTS = [
     price: 1350,
     status: 'ישן',
     phoneNumber: '050-1234567',
-    picture: PRODUCT_IMAGES.sofa,
     description: 'ספה נוחה ומרווחת בצבע חום, מצב טוב. איסוף עצמי.',
     categor: { categoryName: 'רהיטים' },
     area: { areaName: 'מרכז' },
@@ -55,7 +51,6 @@ export const MOCK_PRODUCTS = [
     price: 980,
     status: 'כמו_חדש',
     phoneNumber: '052-9876543',
-    picture: PRODUCT_IMAGES.dining,
     description: 'שולחן אוכל מעץ מלא עם 6 כיסאות מרופדים.',
     categor: { categoryName: 'רהיטים' },
     area: { areaName: 'ירושלים' },
@@ -67,7 +62,6 @@ export const MOCK_PRODUCTS = [
     price: 750,
     status: 'ישן',
     phoneNumber: '054-5551234',
-    picture: PRODUCT_IMAGES.wardrobe,
     description: 'ארון הזזה גדול, 3 דלתות מראה. מידות: 240x60x220 ס"מ.',
     categor: { categoryName: 'רהיטים' },
     area: { areaName: 'דרום' },
@@ -79,7 +73,6 @@ export const MOCK_PRODUCTS = [
     price: 2450,
     status: 'כמו_חדש',
     phoneNumber: '050-1234567',
-    picture: PRODUCT_IMAGES.smartphone,
     description: 'סמארטפון בצבע כחול, סוללה 92%. כולל קופסה מקורית ומטען.',
     categor: { categoryName: 'אלקטרוניקה' },
     area: { areaName: 'גוש_דן' },
@@ -91,7 +84,6 @@ export const MOCK_PRODUCTS = [
     price: 4200,
     status: 'כמו_חדש',
     phoneNumber: '052-9876543',
-    picture: PRODUCT_IMAGES.macbook,
     description: 'מקבוק אייר M1, 8GB RAM. מצב מעולה, ללא שריטות.',
     categor: { categoryName: 'אלקטרוניקה' },
     area: { areaName: 'מרכז' },
@@ -103,7 +95,6 @@ export const MOCK_PRODUCTS = [
     price: 1650,
     status: 'ישן',
     phoneNumber: '054-5551234',
-    picture: PRODUCT_IMAGES.fridge,
     description: 'מקרר 4 דלתות, No Frost, צבע נירוסטה.',
     categor: { categoryName: 'אלקטרוניקה' },
     area: { areaName: 'צפון' },
@@ -115,7 +106,6 @@ export const MOCK_PRODUCTS = [
     price: 2100,
     status: 'כמו_חדש',
     phoneNumber: '050-1234567',
-    picture: PRODUCT_IMAGES.ps5,
     description: 'PS5 דיסק edition, כולל 2 בקרי DualSense ו-3 משחקים.',
     categor: { categoryName: 'אלקטרוניקה' },
     area: { areaName: 'דרום' },
@@ -127,7 +117,6 @@ export const MOCK_PRODUCTS = [
     price: 320,
     status: 'חדש',
     phoneNumber: '052-9876543',
-    picture: PRODUCT_IMAGES.bag,
     description: 'תיק עור איכותי, מתאים לגברים ונשים. חדש עם תווית.',
     categor: { categoryName: 'בלי_חיים' },
     area: { areaName: 'ירושלים' },
@@ -139,7 +128,6 @@ export const MOCK_PRODUCTS = [
     price: 890,
     status: 'כמו_חדש',
     phoneNumber: '054-5551234',
-    picture: PRODUCT_IMAGES.watch,
     description: 'שעון ספורט חכם עם GPS, מד דופק וניטור שינה.',
     categor: { categoryName: 'בלי_חיים' },
     area: { areaName: 'גוש_דן' },
@@ -151,7 +139,6 @@ export const MOCK_PRODUCTS = [
     price: 3500,
     status: 'כמו_חדש',
     phoneNumber: '050-1234567',
-    picture: PRODUCT_IMAGES.ebike,
     description: 'אופניים חשמליים עם טווח 60 ק"מ. סוללה חדשה.',
     categor: { categoryName: 'שונות' },
     area: { areaName: 'מרכז' },
@@ -163,7 +150,6 @@ export const MOCK_PRODUCTS = [
     price: 650,
     status: 'ישן',
     phoneNumber: '052-9876543',
-    picture: PRODUCT_IMAGES.coffee,
     description: 'מכונת קפה אוטומטית, מכינה espresso ו-cappuccino.',
     categor: { categoryName: 'שונות' },
     area: { areaName: 'צפון' },
@@ -175,7 +161,6 @@ export const MOCK_PRODUCTS = [
     price: 280,
     status: 'חדש_באריזה',
     phoneNumber: '054-5551234',
-    picture: PRODUCT_IMAGES.cookware,
     description: 'סט סירים ומחבתות מנירוסטה איכותית, חדש באריזה.',
     categor: { categoryName: 'שונות' },
     area: { areaName: 'דרום' },
@@ -184,10 +169,5 @@ export const MOCK_PRODUCTS = [
 ]
 
 export function mergeWithImages(products) {
-  return products.map((p) => {
-    if (p.picture?.startsWith('http')) return p
-    const mock = MOCK_PRODUCTS.find((m) => m.id === p.id || m.nameProduct === p.nameProduct)
-    if (mock) return { ...p, picture: mock.picture }
-    return p
-  })
+  return products.map((p) => ({ ...p, picture: getProductImage(p) }))
 }

@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 import { categoriesApi } from '../api/catalog'
 import { productsApi } from '../api/products'
-import { CATEGORY_NAV, formatCategory } from '../utils/images'
+import { CATEGORY_NAV, PRODUCT_IMAGES, formatCategory } from '../utils/images'
 import { MOCK_PRODUCTS } from '../data/mockProducts'
 
 const counts = ref({})
@@ -28,11 +28,11 @@ onMounted(async () => {
 })
 
 const mainCategories = [
-  { key: 'רהיטים', label: 'רהיטים', image: 'https://images.unsplash.com/photo-1555041469-a586c0361544?w=400&h=300&fit=crop&q=80' },
-  { key: 'כלי_נגינה', label: 'כלי נגינה', image: 'https://images.unsplash.com/photo-1516925856310-b593457a71a5?w=400&h=300&fit=crop&q=80' },
-  { key: 'אלקטרוניקה', label: 'אלקטרוניקה', image: 'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=400&h=300&fit=crop&q=80' },
-  { key: 'בלי_חיים', label: 'אביזרים', image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=300&fit=crop&q=80' },
-  { key: 'שונות', label: 'שונות', image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop&q=80' },
+  { key: 'רהיטים', label: 'רהיטים', image: PRODUCT_IMAGES.sofa },
+  { key: 'כלי_נגינה', label: 'כלי נגינה', image: PRODUCT_IMAGES.guitar },
+  { key: 'אלקטרוניקה', label: 'אלקטרוניקה', image: PRODUCT_IMAGES.electronics },
+  { key: 'בלי_חיים', label: 'אביזרים', image: PRODUCT_IMAGES.bag },
+  { key: 'שונות', label: 'שונות', image: PRODUCT_IMAGES.misc },
 ]
 </script>
 

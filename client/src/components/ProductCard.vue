@@ -3,128 +3,126 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { getProductImage, formatPrice, formatCategory, formatStatus } from '../utils/images'
 
-defineProps({
+const props = defineProps({
   product: { type: Object, required: true },
 })
 
-const imgError = ref(false)
+const liked = ref(false)
+const imgSrc = ref(getProductImage(props.product))
 
-function onImgError(e) {
-  imgError.value = true
-  e.target.src = getProductImage({ categor: { categoryName: 'שונות' } })
+function onImgError() {
+  imgSrc.value = getProductImage({ categor: props.product?.categor })
+}
+
+function toggleLike(e) {
+  e.preventDefault()
+  e.stopPropagation()
+  liked.value = !liked.value
 }
 </script>
 
 <template>
-  <RouterLink :to="`/products/${product.id}`" class="product-card card">
-    <div class="image-wrap">
+  <RouterLink :to="`/products/${product.id}`" class="yad-card">
+    <div class="img-box">
       <img
-        :src="getProductImage(product)"
+        :src="imgSrc"
         :alt="product.nameProduct"
         loading="lazy"
         @error="onImgError"
       />
-      <span v-if="product.status" class="badge">{{ formatStatus(product.status) }}</span>
+      <button class="heart" :class="{ active: liked }" @click="toggleLike" aria-label="שמירה">
+        <svg width="20" height="20" viewBox="0 0 24 24" :fill="liked ? '#ff7100' : 'none'" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </button>
     </div>
-    <div class="card-body">
-      <span v-if="product.categor" class="category">
-        {{ formatCategory(product.categor.categoryName) }}
-      </span>
+    <div class="info">
+      <p class="price">{{ formatPrice(product.price) }}</p>
       <h3>{{ product.nameProduct }}</h3>
-      <div class="meta">
-        <span class="price">{{ formatPrice(product.price) }}</span>
-        <span v-if="product.area" class="area">
-          📍 {{ formatCategory(product.area.areaName) }}
-        </span>
-      </div>
+      <p class="meta">
+        <span v-if="product.area">{{ formatCategory(product.area.areaName) }}</span>
+        <span v-if="product.status" class="dot">·</span>
+        <span v-if="product.status">{{ formatStatus(product.status) }}</span>
+      </p>
     </div>
   </RouterLink>
 </template>
 
 <style scoped>
-.product-card {
-  transition: transform 0.25s, box-shadow 0.25s;
-  display: flex;
-  flex-direction: column;
+.yad-card {
+  display: block;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.15s;
 }
 
-.product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.yad-card:hover {
+  box-shadow: var(--shadow-md);
 }
 
-.image-wrap {
+.img-box {
   position: relative;
   aspect-ratio: 4/3;
+  background: #f5f5f5;
   overflow: hidden;
-  background: var(--primary-light);
 }
 
-.image-wrap img {
+.img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s;
 }
 
-.product-card:hover img {
-  transform: scale(1.05);
-}
-
-.badge {
+.heart {
   position: absolute;
-  top: 0.75rem;
-  inset-inline-start: 0.75rem;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary);
+  top: 0.5rem;
+  inset-inline-start: 0.5rem;
+  background: rgba(255,255,255,0.92);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #757575;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
 }
 
-.card-body {
-  padding: 1rem 1.25rem 1.25rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+.heart.active {
+  color: var(--yad2-orange);
 }
 
-.category {
-  font-size: 0.75rem;
-  color: var(--primary);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+.info {
+  padding: 0.65rem 0.5rem 0.75rem;
 }
 
-.card-body h3 {
-  font-size: 1rem;
+.price {
+  font-size: 1.15rem;
   font-weight: 700;
-  margin: 0.35rem 0 0.75rem;
+  color: var(--text-dark);
+  margin-bottom: 0.2rem;
+}
+
+.info h3 {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text);
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 0.25rem;
 }
 
 .meta {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.price {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-
-.area {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
+}
+
+.dot {
+  margin: 0 0.2rem;
 }
 </style>

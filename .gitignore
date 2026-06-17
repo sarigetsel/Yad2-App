@@ -1,6 +1,8 @@
 HELP.md
 target/
 *.trace.db
+*.mv.db
+hand.eml
 client/node_modules/
 client/dist/
 !.mvn/wrapper/maven-wrapper.jar

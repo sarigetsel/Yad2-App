@@ -1,6 +1,5 @@
 HELP.md
 target/
-images/
 *.trace.db
 client/node_modules/
 client/dist/

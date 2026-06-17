@@ -22,6 +22,8 @@ onMounted(async () => {
   try {
     const { data } = await productsApi.getAll()
     products.value = data
+  } catch {
+    products.value = []
   } finally {
     loading.value = false
   }

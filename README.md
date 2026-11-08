@@ -2,6 +2,12 @@
 
 A modern, high-performance second-hand marketplace application engineered with a **Java Spring Boot** RESTful backend and a **Vue 3** single-page application (SPA) frontend.
 
+<p align="center">
+  <img width="1897" height="907" alt="Screenshot 2026-11-08 152022" src="https://github.com/user-attachments/assets/965880cb-2949-4dcd-b896-2c69cd0b825e" />
+  <img width="1897" height="905" alt="Screenshot 2026-11-08 152041" src="https://github.com/user-attachments/assets/55fe3606-fa6e-43d6-bc30-081587752d7a" />
+ <img width="1897" height="907" alt="Screenshot 2026-11-08 152157" src="https://github.com/user-attachments/assets/6660fa3b-8448-4a0a-af2b-f45f66a50f6c" />
+
+</p>
 ---
 
 ## 🚀 Key Features & Architecture
